@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgitaYDecide — ¿Nadie se decide? Agítalo.</title>
+  <meta name="description" content="Pon tus opciones, agita el móvil y deja que el azar decida. Rápido, imparcial y sin discusiones.">
+  <meta name="theme-color" content="#0f0f22">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+  <!-- Iconos reutilizables -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="rotate(-12 16.5 15.5)">
+          <rect x="10" y="4" width="13" height="23" rx="3.2"/>
+          <path d="M14.4 12.6a2.2 2.2 0 1 1 3.1 2c-.7.3-1 .8-1 1.5"/>
+          <path d="M16.5 19.6v.1"/>
+        </g>
+        <path d="M6.4 9.6c-1.7 3.3-1.6 7.7.5 11"/>
+        <path d="M3 12.6c-.9 2.1-.8 4.4.3 6.3"/>
+        <path d="M26.2 8.8c2.1 3.2 2.3 7.5.7 11"/>
+        <path d="M29.4 11.8c.9 2.1.9 4.4-.1 6.4"/>
+      </g>
+    </symbol>
+    <symbol id="i-shake" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8.5" y="4" width="7" height="16" rx="1.8"/>
+        <path d="M5 8c-1.3 2.6-1.3 5.4 0 8"/>
+        <path d="M19 8c1.3 2.6 1.3 5.4 0 8"/>
+        <path d="M2 10.2c-.5 1.3-.5 2.4 0 3.6"/>
+        <path d="M22 10.2c.5 1.3.5 2.4 0 3.6"/>
+      </g>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12.5c5-.6 10-.4 15 .2"/>
+        <path d="M14 7.5c2 1.8 3.6 3.4 5 5-1.6 1.6-3.3 3.1-5 4.6"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- 1. HEADER -->
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand" aria-label="AgitaYDecide, inicio">
+        <svg class="brand-mark"><use href="#i-logo"/></svg>
+        <span>AgitaYDecide</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#beneficios">Beneficios</a>
+        <a href="#pruebalo">Pruébalo</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#faq">FAQ</a>
+        <a href="#descarga" class="btn btn-sm nav-cta">Agitar y decidir</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 2. HERO -->
+    <section class="hero">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-plain" data-reveal>Tus decisiones, en un gesto</p>
+          <h1 class="hero-title" data-reveal style="--d:.08s">
+            ¿Nadie se decide?
+            <span class="hl-lime">Agítalo.
+              <svg class="scribble" viewBox="0 0 300 34" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M4 14 C 70 6, 170 4, 296 9"/>
+                <path d="M26 26 C 90 18, 170 17, 232 21"/>
+              </svg>
+            </span>
+          </h1>
+          <p class="hero-lead" data-reveal style="--d:.18s">Pon tus opciones. Agita el móvil.<br>Deja que el azar decida.</p>
+          <div class="hero-actions" data-reveal style="--d:.26s">
+            <a href="#pruebalo" class="btn">
+              Agitar y decidir
+              <svg class="btn-ico"><use href="#i-shake"/></svg>
+            </a>
+          </div>
+          <p class="hero-tags" data-reveal style="--d:.34s">Rápido. Imparcial. Sin discusiones.</p>
+        </div>
+
+        <div class="hero-art" data-reveal="fade" style="--d:.2s">
+          <p class="hand-note hero-note">
+            Tú pones<br>las opciones,<br>nosotros el<br>punto final.
+            <svg viewBox="0 0 140 24" aria-hidden="true">
+              <path class="s-lime" d="M4 12 C 40 4, 90 2, 136 4"/>
+              <path class="s-pink" d="M30 20 C 60 14, 96 12, 120 13"/>
+            </svg>
+          </p>
+
+          <svg class="hero-svg" viewBox="0 0 560 520" role="img" aria-label="Una mano agitando un móvil con la app AgitaYDecide">
+            <g class="arcs arcs-l" fill="none" stroke-linecap="round" stroke-width="6">
+              <path class="s-lime" d="M158 118 C 124 176, 118 256, 140 326"/>
+              <path class="s-pink" d="M116 158 C 96 206, 94 262, 108 302"/>
+              <path class="s-pink" d="M190 66 C 178 78, 168 92, 162 104"/>
+              <path class="s-cyan" d="M160 372 C 168 390, 180 404, 194 414"/>
+              <path class="s-violet" d="M84 214 C 80 230, 80 246, 84 262"/>
+            </g>
+            <g class="arcs arcs-r" fill="none" stroke-linecap="round" stroke-width="6">
+              <path class="s-cyan" d="M420 96 C 452 148, 464 220, 450 290"/>
+              <path class="s-pink" d="M460 124 C 482 174, 486 234, 472 276"/>
+              <path class="s-pink" d="M388 44 C 400 54, 410 66, 418 80"/>
+              <path class="s-lime" d="M482 306 C 478 334, 468 356, 456 376"/>
+            </g>
+
+            <g class="rig-float">
+              <g class="rig">
+                <g transform="translate(206 58) rotate(-11 90 170)">
+                  <!-- palma -->
+                  <path class="hand" d="M150 150 C 204 150, 240 192, 242 252 C 244 302, 232 334, 246 384 L 276 540 L 92 560 L 72 430 C 62 390, 44 356, 44 322 Z"/>
+                  <path class="hand-line" d="M206 300 C 220 322, 224 348, 222 374"/>
+                  <!-- móvil -->
+                  <rect x="0" y="0" width="180" height="340" rx="34" class="phone-body"/>
+                  <rect x="12" y="12" width="156" height="316" rx="24" class="phone-screen"/>
+                  <rect x="66" y="22" width="48" height="10" rx="5" class="phone-notch"/>
+                  <g transform="translate(64 118) scale(1.65)" class="phone-logo">
+                    <use href="#i-logo" width="32" height="32"/>
+                  </g>
+                  <text x="90" y="200" text-anchor="middle" class="phone-text">AgitaYDecide</text>
+                  <!-- dedos -->
+                  <g class="finger"><rect x="-34" y="126" width="64" height="38" rx="19"/><rect class="nail" x="8" y="133" width="15" height="24" rx="7"/></g>
+                  <g class="finger"><rect x="-38" y="168" width="68" height="38" rx="19"/><rect class="nail" x="8" y="175" width="15" height="24" rx="7"/></g>
+                  <g class="finger"><rect x="-36" y="210" width="64" height="38" rx="19"/><rect class="nail" x="6" y="217" width="15" height="24" rx="7"/></g>
+                  <g class="finger"><rect x="-30" y="252" width="54" height="34" rx="17"/><rect class="nail" x="2" y="258" width="14" height="22" rx="6.5"/></g>
+                  <!-- pulgar -->
+                  <g class="finger" transform="rotate(-52 196 250)"><rect x="150" y="230" width="86" height="42" rx="21"/><rect class="nail" x="157" y="238" width="17" height="26" rx="8"/></g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BENEFICIOS -->
+    <section class="section benefits" id="beneficios">
+      <div class="wrap benefits-inner">
+        <div class="benefits-head" data-reveal>
+          <p class="eyebrow">Beneficios</p>
+          <h2 class="h2">Menos vueltas.<br><span class="hl-lime">Más plan.
+            <svg class="scribble" viewBox="0 0 300 34" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 22 C 80 12, 180 8, 296 6"/>
+              <path d="M60 30 C 120 24, 200 20, 270 18"/>
+            </svg></span>
+          </h2>
+        </div>
+
+        <ul class="benefits-list">
+          <li class="benefit" data-reveal style="--d:.05s">
+            <svg class="benefit-ico c-lime" viewBox="0 0 24 24"><path d="M13.2 2.5 4.8 13.6h6.4l-1 7.9 8.6-11.4h-6.5l.9-7.6z"/></svg>
+            <h3>Rápido</h3>
+            <p>Decide en un segundo. Literalmente lo que tardas en agitar.</p>
+          </li>
+          <li class="benefit" data-reveal style="--d:.13s">
+            <svg class="benefit-ico c-pink" viewBox="0 0 24 24"><path d="M12 3.5v17M7.5 20.5h9M4.5 7.2c2.6-.5 5-1.3 7.5-2.3 2.5 1 4.9 1.8 7.5 2.3M4.5 7.2 1.8 13a2.8 2.8 0 0 0 5.4 0L4.5 7.2zM19.5 7.2 16.8 13a2.8 2.8 0 0 0 5.4 0l-2.7-5.8z"/></svg>
+            <h3>Imparcial</h3>
+            <p>Nadie eligió. Decidió el azar. Todas las opciones pesan lo mismo.</p>
+          </li>
+          <li class="benefit" data-reveal style="--d:.21s">
+            <svg class="benefit-ico c-cyan" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3.2"/><path d="M2.5 19.5c.4-3.4 2.8-5.6 6-5.6s5.6 2.2 6 5.6"/><circle cx="16.8" cy="7.2" r="2.6"/><path d="M15.6 12.6c3.6-.6 5.7 1.6 6 5.2"/></svg>
+            <h3>Sin discusiones</h3>
+            <p>Tú pones las opciones. El azar pone el punto final. Nadie se queda resentido.</p>
+          </li>
+          <li class="benefit" data-reveal style="--d:.29s">
+            <svg class="benefit-ico c-violet" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M8 14.2c1.1 1.6 2.4 2.3 4 2.3s2.9-.7 4-2.3"/><path d="M9 9.4v.6M15 9.4v.6"/></svg>
+            <h3>Divertido</h3>
+            <p>Una decisión también puede ser un juego. Y el móvil, la tómbola.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. CTA (demo interactiva) -->
+    <section class="section try" id="pruebalo">
+      <div class="wrap try-inner">
+        <div class="try-phone-wrap" data-reveal="left">
+          <svg class="burst" viewBox="0 0 400 520" aria-hidden="true">
+            <g fill="none" stroke-linecap="round" stroke-width="5">
+              <path class="s-pink" d="M44 96 l38 22"/><path class="s-ink" d="M26 150 l46 10"/><path class="s-lime" d="M30 214 l40 0"/>
+              <path class="s-pink" d="M34 300 l40 -12"/><path class="s-ink" d="M50 360 l34 -22"/><path class="s-cyan" d="M74 418 l28 -28"/>
+              <path class="s-lime" d="M352 92 l-34 26"/><path class="s-cyan" d="M372 158 l-44 12"/><path class="s-pink" d="M374 236 l-42 -2"/>
+              <path class="s-ink" d="M362 300 l-40 -10"/><path class="s-lime" d="M344 372 l-34 -20"/><path class="s-pink" d="M320 430 l-26 -26"/>
+            </g>
+          </svg>
+          <div class="demo-phone" id="demoPhone">
+            <div class="dp-screen">
+              <div class="dp-brand"><svg><use href="#i-logo"/></svg>AgitaYDecide</div>
+              <ul class="dp-list" id="optList" aria-label="Opciones"></ul>
+              <form class="dp-add" id="optForm" autocomplete="off">
+                <input id="optInput" maxlength="18" placeholder="Añadir opción…" aria-label="Nueva opción">
+                <button type="submit" aria-label="Añadir opción">+</button>
+              </form>
+              <button type="button" class="dp-shake" id="shakeBtn">Agitar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="try-copy" data-reveal style="--d:.1s">
+          <p class="eyebrow eyebrow-ink">La solución</p>
+          <h2 class="h2">Tú pones las opciones.<br><span class="hl-pink">Nosotros ponemos<br>el punto final.</span></h2>
+          <p class="try-lead">AgitaYDecide convierte una discusión eterna en un gesto de un segundo. Pruébalo aquí mismo: cambia las opciones y dale a <strong>Agitar</strong>.</p>
+          <p class="hand-note try-note">
+            <svg class="note-arrow" viewBox="0 0 80 50" aria-hidden="true"><path d="M76 8 C 50 4, 22 14, 10 38 M10 38 l-2 -14 M10 38 l13 -5"/></svg>
+            En el móvil puedes agitarlo de verdad.
+          </p>
+          <p class="demo-hint" id="demoHint" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="try-result" data-reveal="right" style="--d:.2s">
+          <svg class="curly-arrow" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 56 C 14 30, 40 52, 34 34 C 28 16, 52 12, 78 18 M78 18 l-12 -10 M78 18 l-12 9"/></svg>
+          <div class="verdict" id="verdict" aria-live="polite">
+            <svg class="verdict-rays" viewBox="0 0 200 120" aria-hidden="true">
+              <g fill="none" stroke-linecap="round" stroke-width="4">
+                <path class="s-pink" d="M40 34 l-14 -10"/><path class="s-cyan" d="M62 18 l-6 -14"/><path class="s-lime" d="M100 12 v-12"/>
+                <path class="s-violet" d="M138 18 l6 -14"/><path class="s-pink" d="M160 34 l14 -10"/><path class="s-lime" d="M30 70 h-16"/><path class="s-cyan" d="M170 70 h16"/>
+              </g>
+            </svg>
+            <div class="verdict-ico" id="verdictIco"></div>
+            <p class="verdict-name" id="verdictName">¿?</p>
+            <p class="verdict-sub" id="verdictSub">Agita para decidir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. EXPLICACIÓN -->
+    <section class="section explain" id="como-funciona">
+      <div class="wrap">
+        <div class="problem">
+          <div class="problem-copy" data-reveal>
+            <p class="eyebrow">El problema</p>
+            <h2 class="h2">¿Y entonces<br>qué hacemos?</h2>
+            <p class="problem-lines">Una opción.<br>Otra opción.<br>“Me da igual”.<br>“Elige tú”.<br>Y seguimos sin decidir.</p>
+            <p class="problem-tip">
+              <svg><use href="#i-arrow"/></svg>
+              Las decisiones pequeñas no deberían quitarte tanto tiempo.
+            </p>
+          </div>
+
+          <div class="chat" data-reveal="stagger" aria-label="Conversación típica de grupo">
+            <span class="bubble b-grey" style="--i:0;--r:-3deg;--x:0%">¿Pizza o sushi?</span>
+            <span class="bubble b-grey" style="--i:1;--r:-2deg;--x:26%">¿Tacos o hamburguesa?</span>
+            <span class="bubble b-grey" style="--i:2;--r:-4deg;--x:-2%">¿Voy o me quedo?</span>
+            <span class="bubble b-pink" style="--i:3;--r:-5deg;--x:32%">Me da igual.</span>
+            <span class="bubble b-cyan" style="--i:4;--r:-3deg;--x:46%">Elige tú.</span>
+            <svg class="chat-doodle" viewBox="0 0 70 30" aria-hidden="true"><path d="M4 20 c6 -14 16 -14 14 -2 c-2 12 -12 8 -6 -2 c6 -10 14 -10 18 -2 c3 6 10 8 16 2 c4 -4 10 -6 20 -2"/></svg>
+          </div>
+
+          <svg class="bored" viewBox="0 0 240 300" data-reveal="fade" style="--d:.3s" aria-hidden="true">
+            <g fill="none" stroke-linecap="round" stroke-width="4">
+              <path class="s-lime" d="M22 86 l14 10 l-14 8 l16 8"/>
+              <path class="s-violet" d="M14 150 l20 4"/>
+              <path class="s-lime" d="M28 210 l12 -10"/>
+              <path class="s-violet" d="M206 60 l-10 14 l14 2 l-10 14"/>
+              <path class="s-lime" d="M214 160 l14 -8 l-4 14 l14 -6"/>
+              <path class="s-violet" d="M200 230 l18 10"/>
+            </g>
+            <g class="bored-phone">
+              <rect x="64" y="40" width="118" height="220" rx="24" class="phone-body thin" transform="rotate(10 123 150)"/>
+              <g transform="rotate(10 123 150)" fill="none" stroke="#f5f3ee" stroke-width="3.5" stroke-linecap="round">
+                <circle cx="123" cy="150" r="26"/>
+                <path d="M110 144 h9 M128 143 l9 2"/>
+                <path d="M112 162 c6 -2 14 -2 22 0"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <svg class="divider" viewBox="0 0 1000 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 180 4, 340 18, 520 9 S 860 4, 998 12"/></svg>
+
+        <div class="steps-block">
+          <div class="steps-head" data-reveal>
+            <p class="eyebrow">Cómo funciona</p>
+            <h2 class="h2">Tres pasos.<br>Cero discusiones.</h2>
+            <svg class="steps-scribble" viewBox="0 0 160 20" aria-hidden="true"><path class="s-lime" d="M4 10 C 50 3, 110 3, 156 8"/><path class="s-violet" d="M20 17 C 60 12, 100 12, 130 14"/></svg>
+          </div>
+
+          <ol class="steps">
+            <li class="step" data-reveal style="--d:.05s;--c:var(--lime)">
+              <div class="mini-phone">
+                <span class="mp-row" style="--c:var(--pink)">Pizza</span>
+                <span class="mp-row" style="--c:var(--cyan)">Sushi</span>
+                <span class="mp-row" style="--c:var(--lime)">Tacos</span>
+                <span class="mp-btn">Agitar</span>
+              </div>
+              <div class="step-body">
+                <span class="step-num">01</span>
+                <h3>Pon las opciones</h3>
+                <p>Pizza, sushi, tacos… Tú decides qué entra. Y qué no.</p>
+              </div>
+            </li>
+            <li class="step" data-reveal style="--d:.15s;--c:var(--pink)">
+              <div class="mini-phone is-shaking">
+                <svg class="mp-logo"><use href="#i-logo"/></svg>
+                <svg class="mp-waves" viewBox="0 0 160 120" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-width="4"><path class="s-pink" d="M10 30 C 2 50, 2 70, 10 90"/><path class="s-lime" d="M150 30 C 158 50, 158 70, 150 90"/></g></svg>
+              </div>
+              <div class="step-body">
+                <span class="step-num">02</span>
+                <h3>Agita</h3>
+                <p>Dale una sacudida al móvil. Con ganas, que es lo divertido.</p>
+              </div>
+            </li>
+            <li class="step" data-reveal style="--d:.25s;--c:var(--cyan)">
+              <div class="mini-phone mp-result">
+                <svg class="mp-burst" viewBox="0 0 60 30" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-width="3"><path class="s-pink" d="M10 22 l-6 -6"/><path class="s-lime" d="M20 12 l-3 -8"/><path class="s-cyan" d="M30 10 v-8"/><path class="s-lime" d="M40 12 l3 -8"/><path class="s-violet" d="M50 22 l6 -6"/></g></svg>
+                <strong>Tacos</strong>
+                <small>Decidió el azar.</small>
+              </div>
+              <div class="step-body">
+                <span class="step-num">03</span>
+                <h3>Listo</h3>
+                <p>El azar da el veredicto. ¿No convenció? Agita otra vez.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. TESTIMONIOS -->
+    <section class="section testimonials" id="testimonios">
+      <div class="wrap">
+        <div class="t-head" data-reveal>
+          <p class="eyebrow">Testimonios</p>
+          <h2 class="h2">Gente que dejó de decir<br><span class="hl-lime">“me da igual”.</span></h2>
+          <p class="hand-note t-note">(o casi)</p>
+        </div>
+
+        <div class="t-grid">
+          <figure class="t-card" data-reveal style="--d:.05s;--r:-1.6deg">
+            <span class="t-verdict" style="--c:var(--lime)">Veredicto: Ramen</span>
+            <blockquote>“Llevábamos cuarenta minutos en el grupo decidiendo dónde cenar. Lo agitamos en la mesa del bar y a los tres segundos ya estábamos pidiendo.”</blockquote>
+            <figcaption><span class="avatar" style="--c:var(--pink)">CR</span><span><strong>Camila R.</strong>Plan de viernes</span></figcaption>
+          </figure>
+
+          <figure class="t-card t-card--lime" data-reveal style="--d:.12s;--r:1.2deg">
+            <span class="tape" aria-hidden="true"></span>
+            <blockquote>“Lo uso para decidir quién friega. Nadie puede discutir con un móvil. Bueno, yo lo intenté. No funcionó.”</blockquote>
+            <figcaption><span class="avatar" style="--c:var(--ink)">JP</span><span><strong>Julián P.</strong>Piso compartido · Veredicto: Julián</span></figcaption>
+          </figure>
+
+          <figure class="t-card" data-reveal style="--d:.19s;--r:-.8deg">
+            <span class="t-verdict" style="--c:var(--cyan)">Veredicto: Comedia</span>
+            <blockquote>“Mi pareja y yo ya no discutimos por qué peli ver. Discutimos menos, al menos. El azar no tiene favoritos y eso, curiosamente, calma.”</blockquote>
+            <figcaption><span class="avatar" style="--c:var(--cyan)">LD</span><span><strong>Laura y Diego</strong>Noche de sofá</span></figcaption>
+          </figure>
+
+          <figure class="t-card t-card--bubble" data-reveal style="--d:.05s;--r:1deg">
+            <span class="t-verdict" style="--c:var(--pink)">Veredicto: Sushi</span>
+            <blockquote>“Soy la persona que siempre dice ‘me da igual’. Ahora digo ‘agítalo’ y parezco alguien resolutivo.”</blockquote>
+            <figcaption><span class="avatar" style="--c:var(--violet)">MG</span><span><strong>Mateo G.</strong>Indeciso en recuperación</span></figcaption>
+          </figure>
+
+          <figure class="t-card" data-reveal style="--d:.12s;--r:-1.4deg">
+            <span class="tape tape--pink" aria-hidden="true"></span>
+            <blockquote>“Pensé que era una tontería hasta que lo usamos para elegir destino de fin de semana. Salió la montaña. Ni lo habríamos considerado y fue el mejor plan del año.”</blockquote>
+            <figcaption><span class="avatar" style="--c:var(--lime)">SM</span><span><strong>Sofía M.</strong>Escapada improvisada</span></figcaption>
+          </figure>
+
+          <figure class="t-card" data-reveal style="--d:.19s;--r:.9deg">
+            <span class="t-verdict" style="--c:var(--violet)">Veredicto: Grupo 3</span>
+            <blockquote>“En clase lo usamos para decidir quién expone primero. Se acabó el ‘profe, eso no es justo’.”</blockquote>
+            <figcaption><span class="avatar" style="--c:var(--orange)">AL</span><span><strong>Andrea L.</strong>Profesora de secundaria</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CTA 2 -->
+    <section class="cta2" id="descarga">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>¿Pizza o sushi?</span><i>/</i><span>¿Cine o serie?</span><i>/</i><span>¿Quién conduce?</span><i>/</i><span>¿Playa o montaña?</span><i>/</i><span>¿Quién friega?</span><i>/</i><span>¿Salimos o nos quedamos?</span><i>/</i>
+          <span>¿Pizza o sushi?</span><i>/</i><span>¿Cine o serie?</span><i>/</i><span>¿Quién conduce?</span><i>/</i><span>¿Playa o montaña?</span><i>/</i><span>¿Quién friega?</span><i>/</i><span>¿Salimos o nos quedamos?</span><i>/</i>
+        </div>
+      </div>
+
+      <div class="wrap cta2-inner">
+        <div class="cta2-copy" data-reveal>
+          <h2 class="cta2-title">La próxima vez que alguien diga “elige tú”…</h2>
+          <p class="cta2-lead">Descarga AgitaYDecide y deja que el azar ponga el punto final. Gratis, sin registro y sin discusiones.</p>
+          <div class="store-btns">
+            <a href="#" class="btn btn-dark">
+              <svg class="btn-ico"><use href="#i-shake"/></svg>
+              <span><small>Descargar para</small>iPhone</span>
+            </a>
+            <a href="#" class="btn btn-dark">
+              <svg class="btn-ico"><use href="#i-shake"/></svg>
+              <span><small>Descargar para</small>Android</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cta2-badge" data-reveal="fade" style="--d:.15s">
+          <svg viewBox="0 0 220 220" aria-hidden="true">
+            <defs><path id="ring" d="M110 110 m-80 0 a80 80 0 1 1 160 0 a80 80 0 1 1 -160 0"/></defs>
+            <circle cx="110" cy="110" r="106" class="badge-bg"/>
+            <text class="badge-text" textLength="500" lengthAdjust="spacing"><textPath href="#ring">AGITA · DECIDE · REPITE · AGITA · DECIDE · REPITE ·</textPath></text>
+          </svg>
+          <svg class="badge-logo" aria-hidden="true"><use href="#i-logo"/></svg>
+          <p class="hand-note cta2-note">¡Es gratis!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section class="section faq" id="faq">
+      <div class="wrap faq-inner">
+        <div class="faq-head" data-reveal>
+          <p class="eyebrow">FAQ</p>
+          <h2 class="h2">Preguntas<br>frecuentes.</h2>
+          <p class="faq-sub">Y alguna que otra indecisa. Si la tuya no está, escríbenos a <a href="mailto:hola@agitaydecide.app">hola@agitaydecide.app</a>.</p>
+          <p class="hand-note faq-note">Respondemos rápido.<br>No lo echamos a suertes.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item" data-reveal style="--d:.03s">
+            <button class="faq-q" aria-expanded="false">¿Es gratis?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Sí. Agitar y decidir no cuesta nada, y no hay anuncios que se metan entre tú y el veredicto.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal style="--d:.08s">
+            <button class="faq-q" aria-expanded="false">¿El resultado es realmente al azar?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Totalmente. Cada opción tiene exactamente la misma probabilidad de salir. Ni nosotros sabemos qué va a tocar.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal style="--d:.13s">
+            <button class="faq-q" aria-expanded="false">¿Cuántas opciones puedo poner?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Desde dos hasta veinte. Con una sola no hace falta la app: ya lo tienes decidido.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal style="--d:.18s">
+            <button class="faq-q" aria-expanded="false">¿Funciona sin conexión?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Sí. No necesita internet ni cuenta. Perfecto para decidir en el coche, en la montaña o en un bar sin cobertura.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal style="--d:.23s">
+            <button class="faq-q" aria-expanded="false">¿Y si no me gusta lo que ha salido?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Agita otra vez. Aunque, si te ha molestado el resultado, enhorabuena: ya sabías lo que querías.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal style="--d:.28s">
+            <button class="faq-q" aria-expanded="false">¿Puedo guardar mis listas?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><div><p>Claro. Guarda las que más repites, como “¿Qué cenamos?” o “¿Quién saca al perro?”, y ábrelas con un toque.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. PRE-FOOTER -->
+    <section class="prefooter">
+      <svg class="pf-scribbles" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke-linecap="round" stroke-width="3">
+          <path class="s-pink" d="M14 40 l40 -14 M10 60 l52 -18 M18 80 l36 -12"/>
+          <path class="s-cyan" d="M820 140 l26 -24 M838 150 l22 -20"/>
+          <path class="s-pink" d="M1110 40 l40 -16 M1104 62 l30 -10"/>
+          <path class="s-pink" d="M1120 120 l36 -14 M1130 140 l24 -8"/>
+        </g>
+      </svg>
+      <div class="wrap pf-inner" data-reveal>
+        <a href="#top" class="brand brand-lg" aria-label="Volver arriba">
+          <svg class="brand-mark"><use href="#i-logo"/></svg>
+          <span>AgitaYDecide</span>
+        </a>
+        <p class="pf-quote">
+          <span>Tú no elegiste.</span>
+          <span class="hl-lime">Decidió el azar.
+            <svg class="scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 C 80 4, 200 4, 296 8"/></svg>
+          </span>
+        </p>
+        <a href="#pruebalo" class="btn">Agitar y decidir <svg class="btn-ico"><use href="#i-shake"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 10. FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="f-brand">
+        <a href="#top" class="brand"><svg class="brand-mark"><use href="#i-logo"/></svg><span>AgitaYDecide</span></a>
+        <p>La app para cuando nadie se decide. Pon las opciones, agita y a otra cosa.</p>
+      </div>
+      <nav class="f-col" aria-label="Producto">
+        <h4>Producto</h4>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#descarga">Descargar</a>
+      </nav>
+      <nav class="f-col" aria-label="Ayuda">
+        <h4>Ayuda</h4>
+        <a href="#faq">Preguntas frecuentes</a>
+        <a href="mailto:hola@agitaydecide.app">Contacto</a>
+        <a href="#">Privacidad</a>
+      </nav>
+      <nav class="f-col" aria-label="Redes">
+        <h4>Síguenos</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+      </nav>
+    </div>
+    <div class="wrap f-bottom">
+      <p>© <span id="year">2026</span> AgitaYDecide. Todos los derechos reservados.</p>
+      <p>Hecho para quienes siempre dicen “me da igual”.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
