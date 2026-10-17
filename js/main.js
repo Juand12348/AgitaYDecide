@@ -225,6 +225,98 @@
     });
   });
 
+  /* ---------- Modal de registro ----------
+     Se abre desde cualquier elemento con el atributo data-lead-open. */
+  const modal = $('#lead-modal');
+  const modalPanel = $('.lead-modal__panel', modal);
+  let lastFocus = null;
+
+  const openModal = (e) => {
+    e.preventDefault();
+    setMenu(false);
+    lastFocus = document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lead-modal-open');
+    modalPanel.focus();
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lead-modal-open');
+    if (lastFocus) lastFocus.focus();
+  };
+
+  $$('[data-lead-open]').forEach((el) => el.addEventListener('click', openModal));
+  $$('[data-lead-close]', modal).forEach((el) => el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  /* ---------- Envío del formulario a HubSpot (Forms API pública) ---------- */
+  const HUBSPOT_PORTAL_ID = '52177911';
+  const HUBSPOT_FORM_ID = '568c5b1c-cb70-471b-af35-c376a8fe497e';
+  const HUBSPOT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`;
+
+  const leadForm = $('#lead-form');
+  const leadMsg = $('#lead-msg');
+  const leadEmail = $('#lead-email');
+  const leadSubmit = $('.lead-submit', leadForm);
+
+  const setLeadMsg = (text, ok = false) => {
+    leadMsg.textContent = text;
+    leadMsg.classList.toggle('ok', ok);
+  };
+
+  leadEmail.addEventListener('input', () => {
+    leadEmail.classList.remove('is-invalid');
+    if (!leadMsg.classList.contains('ok')) setLeadMsg('');
+  });
+
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(leadForm);
+    const email = String(data.get('email') || '').trim();
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      leadEmail.classList.add('is-invalid');
+      setLeadMsg(email ? 'Escribe un correo válido.' : 'Rellena este campo obligatorio.');
+      leadEmail.focus();
+      return;
+    }
+
+    const payload = {
+      fields: [
+        { name: 'firstname', value: String(data.get('firstname') || '').trim() },
+        { name: 'lastname', value: String(data.get('lastname') || '').trim() },
+        { name: 'email', value: email }
+      ],
+      context: { pageUri: window.location.href, pageName: document.title }
+    };
+
+    leadSubmit.disabled = true;
+    setLeadMsg('Enviando…', true);
+
+    try {
+      const res = await fetch(HUBSPOT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error(`HubSpot respondió ${res.status}`);
+
+      leadForm.reset();
+      setLeadMsg('¡Listo! Te avisaremos de las novedades.', true);
+    } catch (err) {
+      console.error(err);
+      setLeadMsg('No se pudo enviar. Inténtalo de nuevo.');
+    } finally {
+      leadSubmit.disabled = false;
+    }
+  });
+
   /* ---------- Año ---------- */
   $('#year').textContent = new Date().getFullYear();
 })();

@@ -101,7 +101,7 @@
           </h1>
           <p class="hero-lead" data-reveal style="--d:.18s">Pon tus opciones. Agita el móvil.<br>Deja que el azar decida.</p>
           <div class="hero-actions" data-reveal style="--d:.26s">
-            <a href="#pruebalo" class="btn">
+            <a href="#registro" class="btn" data-lead-open aria-haspopup="dialog" aria-controls="lead-modal">
               Agitar y decidir
               <svg class="btn-ico"><use href="#i-shake"/></svg>
             </a>
@@ -410,11 +410,11 @@
           <h2 class="cta2-title">La próxima vez que alguien diga “elige tú”…</h2>
           <p class="cta2-lead">Descarga AgitaYDecide y deja que el azar ponga el punto final. Gratis, sin registro y sin discusiones.</p>
           <div class="store-btns">
-            <a href="#" class="btn btn-dark">
+            <a href="#registro" class="btn btn-dark" data-lead-open aria-haspopup="dialog" aria-controls="lead-modal">
               <svg class="btn-ico"><use href="#i-shake"/></svg>
               <span><small>Descargar para</small>iPhone</span>
             </a>
-            <a href="#" class="btn btn-dark">
+            <a href="#registro" class="btn btn-dark" data-lead-open aria-haspopup="dialog" aria-controls="lead-modal">
               <svg class="btn-ico"><use href="#i-shake"/></svg>
               <span><small>Descargar para</small>Android</span>
             </a>
@@ -529,6 +529,33 @@
       <p>Hecho para quienes siempre dicen “me da igual”.</p>
     </div>
   </footer>
+
+  <!-- FORMULARIO DE REGISTRO (propio; envía los datos a HubSpot por su API) -->
+  <div class="lead-modal" id="lead-modal" aria-hidden="true">
+    <div class="lead-modal__backdrop" data-lead-close></div>
+    <section class="lead-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lead-title" tabindex="-1">
+      <button class="lead-modal__close" type="button" aria-label="Cerrar formulario" data-lead-close>&times;</button>
+      <p class="eyebrow">¡Sigamos en contacto!</p>
+      <h2 class="lead-modal__title" id="lead-title">Entérate de las novedades</h2>
+      <p class="lead-modal__description">Déjanos tu nombre y correo para conocer más sobre AgitaYDecide.</p>
+
+      <form class="lead-form" id="lead-form" novalidate>
+        <div class="lead-row">
+          <label for="lead-firstname">Nombre
+            <input type="text" id="lead-firstname" name="firstname" autocomplete="given-name">
+          </label>
+          <label for="lead-lastname">Apellidos
+            <input type="text" id="lead-lastname" name="lastname" autocomplete="family-name">
+          </label>
+        </div>
+        <label for="lead-email">Correo <span class="req" aria-hidden="true">*</span>
+          <input type="email" id="lead-email" name="email" required autocomplete="email" aria-describedby="lead-msg">
+        </label>
+        <p class="lead-msg" id="lead-msg" role="status" aria-live="polite"></p>
+        <button class="lead-submit" type="submit">Enviar</button>
+      </form>
+    </section>
+  </div>
 
   <script src="js/main.js" defer></script>
 </body>
