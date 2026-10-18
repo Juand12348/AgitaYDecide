@@ -307,6 +307,10 @@
       });
       if (!res.ok) throw new Error(`HubSpot respondió ${res.status}`);
 
+      // Avisa a GTM (y de ahí a Contentsquare) que el formulario se envió bien
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'lead_form_submit' });
+
       leadForm.reset();
       setLeadMsg('¡Listo! Te avisaremos de las novedades.', true);
     } catch (err) {
