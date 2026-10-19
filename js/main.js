@@ -4,6 +4,12 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
+  /* ---------- Analítica: envía eventos al dataLayer de GTM ---------- */
+  const track = (event, params = {}) => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event, ...params });
+  };
+
   /* ---------- Header ---------- */
   const header = $('.site-header');
   const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -222,6 +228,7 @@
       });
       item.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open);
+      if (open) track('faq_open', { faq_question: btn.firstChild.textContent.trim() });
     });
   });
 
@@ -239,6 +246,7 @@
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lead-modal-open');
     modalPanel.focus();
+    track('lead_form_open');
   };
 
   const closeModal = () => {
@@ -307,9 +315,8 @@
       });
       if (!res.ok) throw new Error(`HubSpot respondió ${res.status}`);
 
-      // Avisa a GTM (y de ahí a Contentsquare) que el formulario se envió bien
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'lead_form_submit' });
+      // Avisa a GTM (y de ahí a GA4 y Contentsquare). Sin datos personales.
+      track('lead_form_submit');
 
       leadForm.reset();
       setLeadMsg('¡Listo! Te avisaremos de las novedades.', true);
