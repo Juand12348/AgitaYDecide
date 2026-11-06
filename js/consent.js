@@ -38,7 +38,7 @@
       banner.innerHTML =
         '<p class="cookie-banner__text"><strong>Cookies, pero con permiso.</strong> ' +
         'Usamos cookies de analítica y de chat para mejorar la página. ' +
-        'Tú decides. <a href="privacidad.html">Más información</a></p>' +
+        'Tú decides. <a href="privacidad.html">Política de privacidad y cookies</a></p>' +
         '<div class="cookie-banner__actions">' +
         '<button type="button" class="cookie-btn cookie-btn--ghost" data-cookie="deny">Rechazar</button>' +
         '<button type="button" class="cookie-btn cookie-btn--accept" data-cookie="accept">Aceptar</button>' +
