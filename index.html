@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <!-- Consent Mode: denegado por defecto (debe ir ANTES de GTM) -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'denied',personalization_storage:'denied',security_storage:'granted',wait_for_update:500});
+  try{if(localStorage.getItem('agita_consent_v1')==='granted'){gtag('consent','update',{analytics_storage:'granted',functionality_storage:'granted'});}}catch(e){}
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -549,7 +556,8 @@
         <h4>Ayuda</h4>
         <a href="#faq">Preguntas frecuentes</a>
         <a href="mailto:hola@agitaydecide.app">Contacto</a>
-        <a href="#">Privacidad</a>
+        <a href="privacidad.html">Privacidad</a>
+        <button type="button" class="link-btn" data-cookie-settings>Cookies</button>
       </nav>
       <nav class="f-col" aria-label="Redes">
         <h4>Síguenos</h4>
@@ -592,5 +600,6 @@
   </div>
 
   <script src="js/main.js" defer></script>
+  <script src="js/consent.js" defer></script>
 </body>
 </html>

@@ -1189,3 +1189,33 @@ body.lead-modal-open { overflow: hidden; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
   .marquee-track { animation: none; }
 }
+
+/* ---------- Banner de cookies ---------- */
+.cookie-banner {
+  position: fixed; left: 50%; bottom: 16px; z-index: 90;
+  width: min(720px, calc(100% - 32px));
+  display: flex; align-items: center; gap: 16px 24px; flex-wrap: wrap; justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--ink-3); color: var(--text);
+  border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: 6px 8px 0 -1px var(--pink), 0 20px 50px -20px rgba(0, 0, 0, .7);
+  opacity: 0; transform: translate(-50%, 24px); pointer-events: none;
+  transition: opacity .35s var(--ease), transform .45s var(--spring);
+}
+.cookie-banner.is-open { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.cookie-banner__text { margin: 0; flex: 1 1 320px; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.cookie-banner__text strong { color: var(--text); }
+.cookie-banner__text a { color: var(--lime); text-underline-offset: 3px; }
+.cookie-banner__actions { display: flex; gap: 10px; flex: none; }
+.cookie-btn {
+  font: 700 14px/1 var(--f-display); cursor: pointer;
+  padding: 12px 20px; border-radius: 999px; border: 2px solid var(--lime);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.cookie-btn--accept { background: var(--lime); color: var(--ink); }
+.cookie-btn--ghost { background: transparent; color: var(--lime); }
+.cookie-btn:hover { transform: translateY(-2px); }
+.cookie-btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.footer .link-btn { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+.footer .link-btn:hover { color: var(--lime); }
+@media (prefers-reduced-motion: reduce) { .cookie-banner { transition: opacity .2s; } }
