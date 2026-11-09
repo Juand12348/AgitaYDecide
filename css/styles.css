@@ -2,6 +2,29 @@
    AgitaYDecide — landing
    ========================================================================== */
 
+/* ---------- Fuentes (alojadas en local, variables, subconjunto latino) ---------- */
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/outfit-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("../assets/fonts/dmsans-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Caveat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/caveat-latin.woff2") format("woff2");
+}
+
 :root {
   --ink: #0f0f22;
   --ink-2: #14142c;
@@ -47,16 +70,17 @@ body {
   overflow-x: hidden;
 }
 
-/* grano de papel, muy sutil */
+/* grano de papel, muy sutil.
+   Textura pre-generada (puntos blancos/negros con alfa bajo): sin filtro SVG
+   ni mix-blend-mode, así la capa fija no obliga a recomponer la página al hacer scroll. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 100;
-  opacity: .07;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+  background: url("../assets/noise.webp") repeat;
+  opacity: .35;
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -184,6 +208,21 @@ ul, ol { padding: 0; list-style: none; }
 }
 .js [data-reveal="stagger"].is-in > * { opacity: 1; transform: translateX(var(--x, 0)) rotate(var(--r, 0deg)); }
 
+/* El hero entra con una animación CSS que arranca en el primer pintado,
+   sin esperar a que cargue el JS: el título (LCP) aparece antes. */
+.js .hero [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  animation: hero-in .8s var(--ease) var(--d, 0s) both;
+}
+.js .hero [data-reveal="fade"] { animation-name: hero-fade; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(26px); } }
+@keyframes hero-fade { from { opacity: 0; transform: scale(.97); } }
+
+/* Animaciones infinitas en pausa mientras su sección está fuera de pantalla (ver main.js) */
+.is-offscreen, .is-offscreen * { animation-play-state: paused !important; }
+
 /* ==========================================================================
    1. HEADER
    ========================================================================== */
@@ -196,9 +235,7 @@ ul, ol { padding: 0; list-style: none; }
   padding-block: 18px;
 }
 .site-header.is-scrolled {
-  background: rgba(15, 15, 34, .86);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(15, 15, 34, .97);
   border-color: var(--line);
   padding-block: 10px;
 }
@@ -1169,6 +1206,11 @@ body.lead-modal-open { overflow: hidden; }
   .hero-note { position: static; width: fit-content; margin: 8px 0 -24px auto; transform: rotate(-6deg); font-size: 1.3rem; }
   .hero-note br:nth-of-type(odd) { display: none; }
   .faq-a p { padding-right: 8px; }
+
+  /* menos animación continua en móvil: se mantiene la sacudida de la mano,
+     se quitan la flotación, el vaivén de los arcos y el giro del sello */
+  .rig-float, .arcs-l, .arcs-r, .badge-text { animation: none; }
+  .arcs { opacity: .75; }
 
   .lead-modal__panel { padding: 38px 18px 22px; border-radius: 20px; }
   .lead-row { grid-template-columns: 1fr; gap: 0; }

@@ -49,6 +49,14 @@
   }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
   $$('[data-reveal]').forEach((el) => revealIO.observe(el));
 
+  /* ---------- Pausa las animaciones infinitas fuera de pantalla ----------
+     La mano del hero, la marquesina, el sello giratorio, etc. dejan de
+     repintar mientras su sección no se ve. */
+  const pauseIO = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
+  }, { rootMargin: '100px 0px' });
+  $$('main > section').forEach((el) => pauseIO.observe(el));
+
   /* ---------- Demo: agitar y decidir ---------- */
   const COLORS = ['var(--lime)', 'var(--pink)', 'var(--cyan)', 'var(--violet)', 'var(--orange)'];
   const VERDICTS = ['Decidió el azar.', 'El azar ha hablado.', 'Sin apelaciones.', 'Asunto cerrado.', 'Y no se hable más.'];

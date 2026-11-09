@@ -8,12 +8,32 @@
   gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'denied',personalization_storage:'denied',security_storage:'granted',wait_for_update:500});
   try{if(localStorage.getItem('agita_consent_v1')==='granted'){gtag('consent','update',{analytics_storage:'granted',functionality_storage:'granted'});}}catch(e){}
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TQKG4NX7');</script>
+  <!-- Google Tag Manager (diferido)
+       Se carga con la primera interacción (scroll, toque, tecla) o, como tarde,
+       ~3,5 s después de que la página termine de cargar. Así GTM, GA4, Contentsquare
+       y el chat no compiten con el primer renderizado. El consentimiento por defecto
+       (bloque anterior) y cualquier evento enviado antes quedan en window.dataLayer
+       y GTM los procesa en orden al cargar. -->
+  <script>
+    (function (w, d, id) {
+      w.dataLayer = w.dataLayer || [];
+      var done = false;
+      var evs = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
+      var opts = { once: true, passive: true };
+      function load() {
+        if (done) return;
+        done = true;
+        evs.forEach(function (e) { w.removeEventListener(e, load, opts); });
+        w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var s = d.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=' + id;
+        d.head.appendChild(s);
+      }
+      evs.forEach(function (e) { w.addEventListener(e, load, opts); });
+      w.addEventListener('load', function () { setTimeout(load, 3500); });
+    })(window, document, 'GTM-TQKG4NX7');
+  </script>
   <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,12 +59,10 @@
   <link rel="icon" href="assets/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://script.hj.contentsquare.net" crossorigin>
   <link rel="preconnect" href="https://c.ba.contentsquare.net">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Outfit:wght@500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Outfit:wght@500;600;700;800;900&display=swap"></noscript>
+  <link rel="preload" href="assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
@@ -66,7 +84,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQKG4NX7"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="noise" aria-hidden="true"></div>
 
   <!-- Iconos reutilizables -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
